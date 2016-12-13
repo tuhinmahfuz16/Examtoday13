@@ -136,3 +136,19 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+if( file_exists( dirname( __FILE__ ) . '/lib/metabox/init.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/lib/metabox/init.php' );
+}
+if( file_exists( dirname( __FILE__ ) . '/lib/metabox/config.php' ) ) {
+	require_once( dirname( __FILE__ ) . '/lib/metabox/config.php' );
+}
+
+
+
+
+
+
+
+
