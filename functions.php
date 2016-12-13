@@ -78,6 +78,39 @@ function tuhin_content_width() {
 }
 add_action( 'after_setup_theme', 'tuhin_content_width', 0 );
 
+
+
+
+
+add_action('init','init_functions_add');
+function init_functions_add(){
+
+	register_post_type('mahfuz-services', array(
+		'labels' => array(
+			'name' => __('Service', 'tuhin'),
+			'add_new' => __('Add New Service', 'tuhin'),
+			'add_new_item' => __('Add New Service', 'tuhin'),
+		),
+		'public' => true,
+		'supports'=>array('title','editor','thumbnail'),
+	));
+
+
+	register_taxonomy('service-category','mahfuz-services',array(
+		'labels' => array(
+			'name' => __('Category', 'tuhin'),
+			'add_new' => __('Add New Category', 'tuhin'),
+			'add_new_item' => __('Add New Category', 'tuhin'),
+		),
+		'public' => true,
+		'hierarchical'=> true
+	));
+	
+}
+
+
+
+
 /**
  * Register widget area.
  *
@@ -102,7 +135,18 @@ add_action( 'widgets_init', 'tuhin_widgets_init' );
 function tuhin_scripts() {
 	wp_enqueue_style( 'tuhin-style', get_stylesheet_uri() );
 
+	wp_enqueue_style( 'tuhin-bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '20151216', true );
+	wp_enqueue_style( 'tuhin-font', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '20151217', true );
+
+
+
 	wp_enqueue_script( 'tuhin-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'tuhin-js', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151218', true );
+
+
+
+
 
 	wp_enqueue_script( 'tuhin-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
